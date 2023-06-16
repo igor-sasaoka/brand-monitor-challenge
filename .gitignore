@@ -1,0 +1,3 @@
+job/.env
+front/node_modules
+front/sqlite.db

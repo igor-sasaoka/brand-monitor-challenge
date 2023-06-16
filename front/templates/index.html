@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/dist/output.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container mx-auto mt-60 card w-1/2 bg-neutral text-neutral-content">
+    <div id="mockup" class="mockup-code break-words">
+      <input id="input" type="text" class="absolute opacity-0 w-0 overflow-hidden">
+      <pre data-prefix="$" id="pre"><code id="code"></code></pre>
+    </div>
+  </div>
+</body>
+<script>
+  let input = document.getElementById("input")
+  let code = document.getElementById("code")
+
+  input.onkeyup = function (e) {
+    code.innerText = input.value
+  }
+  input.focus()
+  input.onblur = function (e) {
+    setTimeout(function () {
+      input.focus()
+    }, 10);
+  }
+  input.onkeypress = async function (e) {
+    if (e.key == "Enter") {
+      const res = await fetch("http://localhost:8888", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({"data": input.value}),
+      })
+      const json = await res.json()
+
+      addNewLine(json.message)
+    }
+  }
+
+  function addNewLine(data) {
+    const pre = document.getElementById("pre")
+      const clone = pre.cloneNode(true)
+      pre.id = ""
+      pre.dataset.prefix = ">"
+      pre.firstChild.id = ""
+      code = clone.firstChild
+      code.innerText = ""
+      input.value = ""
+      const newPre = document.createElement("pre")
+      const mockup = document.getElementById("mockup")
+      newPre.classList.add("text-secondary")
+      newPre.innerText = data
+      mockup.appendChild(newPre)
+      mockup.appendChild(clone)
+  }
+</script>
+
+</html>

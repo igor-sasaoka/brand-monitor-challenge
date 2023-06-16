@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/dist/output.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container mx-auto mt-60 card w-96 bg-neutral text-neutral-content">
+    <form action="/login" method="POST">
+      <div class="card-body items-center text-center">
+        <h2 class="card-title">Login</h2>
+        <input name="email" type="email" placeholder="Email" class="input input-bordered w-full max-w-xs" />
+        <input name="password" type="password" placeholder="Password" class="input input-bordered w-full max-w-xs" />
+        <p>Don't have an account? <a href="/register" class="text-secondary">Create one</a></p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

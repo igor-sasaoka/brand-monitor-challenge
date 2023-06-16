@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mx-auto mt-60 card w-96 bg-neutral text-neutral-content">
+        <form action="/register" method="POST">
+            <div class="card-body items-center text-center">
+                <h2 class="card-title">Register</h2>
+                <input name="name" type="text" placeholder="Name" class="input input-bordered w-full max-w-xs"
+                     />
+                <input name="email" type="email" placeholder="Email" class="input input-bordered w-full max-w-xs"
+                    required />
+                <input name="password" type="password" placeholder="Password"
+                    class="input input-bordered w-full max-w-xs" required />
+                <input name="passwordConfirm" type="password" placeholder="Confirm password"
+                    class="input input-bordered w-full max-w-xs" required />
+                <p>Already have an account? <a href="/login" class="text-secondary">Log in</a></p>
+                <div class="card-actions justify-end">
+                    <button class="btn btn-primary">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
